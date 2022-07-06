@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassFlyXaml", "ClassFlyXaml\ClassFlyXaml.csproj", "{DF11726E-AADE-464A-A87C-9DF972D9D1C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassFlyMauiBlazor", "ClassFlyMauiBlazor\ClassFlyMauiBlazor.csproj", "{F070434E-ACAC-4D36-932C-95C129A3677E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassFlyMauiBlazor", "ClassFlyMauiBlazor\ClassFlyMauiBlazor.csproj", "{F070434E-ACAC-4D36-932C-95C129A3677E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassFly.Core", "ClassFly.Core\ClassFly.Core.csproj", "{C9A300EB-2979-4CC4-BB50-13FEABF73890}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{F070434E-ACAC-4D36-932C-95C129A3677E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F070434E-ACAC-4D36-932C-95C129A3677E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F070434E-ACAC-4D36-932C-95C129A3677E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C9A300EB-2979-4CC4-BB50-13FEABF73890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A300EB-2979-4CC4-BB50-13FEABF73890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A300EB-2979-4CC4-BB50-13FEABF73890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A300EB-2979-4CC4-BB50-13FEABF73890}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
