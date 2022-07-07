@@ -1,0 +1,46 @@
+﻿@page "/courses/{CourseName}"
+@page "/courses/{CourseName}/{IsModal}"
+@using ClassFly.Core.Models
+<a href="/">back</a>
+
+@if(Course == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <h1>@Course.Name</h1>
+    <img src="/images/piano-large.jpg"/>
+    <div class="card" style="display: flex; flex-direction:column;">
+        <h2>Select mentor</h2>
+        @foreach(var mentor in Course.Mentors)
+        {
+            <div>
+                <img src="images/@mentor.Image"/>
+                <h3>@mentor.Name</h3>
+                <h3>@mentor.FollowerCount followers</h3>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string? CourseName { get; set; }
+
+    [Parameter]
+    public string? IsModal { get; set; }
+
+    DataService DataService = new DataService();
+    Course Course;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if(CourseName != null)
+        {
+            Course = DataService.GetCourses().FirstOrDefault(x => x.Name == CourseName);
+        }
+
+    }
+}

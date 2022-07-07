@@ -6,12 +6,12 @@
 
 @foreach(var course in Courses)
 {
-    <div class="card">
+    <a class="card" href="courses/@course.Name/@true">
         <img src="/images/@(course.Image)"/>
         <h3>@course.Name </h3>
         <p>in class</p>
         <h4>@course.MemberCount Members</h4>
-    </div>
+    </a>
 }
 
 @code {
