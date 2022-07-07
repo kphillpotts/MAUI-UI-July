@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassFlyXaml", "ClassFlyXam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassFlyMauiBlazor", "ClassFlyMauiBlazor\ClassFlyMauiBlazor.csproj", "{F070434E-ACAC-4D36-932C-95C129A3677E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassFly.Core", "ClassFly.Core\ClassFly.Core.csproj", "{C9A300EB-2979-4CC4-BB50-13FEABF73890}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassFly.Core", "ClassFly.Core\ClassFly.Core.csproj", "{C9A300EB-2979-4CC4-BB50-13FEABF73890}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
