@@ -1,7 +1,26 @@
 ﻿@page "/"
+@using ClassFly.Core.Models
 
-<h1>Hello, world!</h1>
+<h2>Choose course!</h2>
+<input type="text" placeholder="Search course" />
 
-Welcome to your new app.
+@foreach(var course in Courses)
+{
+    <div class="card">
+        <img src="/images/@(course.Image)"/>
+        <h3>@course.Name </h3>
+        <p>in class</p>
+        <h4>@course.MemberCount Members</h4>
+    </div>
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    DataService DataService = new DataService();
+    List<Course> Courses;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Courses = DataService.GetCourses();
+    }
+}

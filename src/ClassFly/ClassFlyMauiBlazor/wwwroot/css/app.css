@@ -1,7 +1,58 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+@font-face {
+    font-family: 'SF UI Text';
+    font-style: normal;
+    font-weight: 400;
+    src: local('SF UI Text'), url('../fonts/SFUIText-Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'SF UI Text';
+    font-style: normal;
+    font-weight: 500;
+    src: local('SF UI Text'), url('../fonts/SFUIText-Medium.woff') format('woff');
+}
+
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, p {
+    font-family: 'SF UI Text';
+}
+
+h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+h4 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: rgba(32, 26, 37, 0.3);
 }
 
 h1:focus {
@@ -33,6 +84,41 @@ a, .btn-link {
 .validation-message {
     color: red;
 }
+
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px;
+    border: 1px solid #DCDDE0;
+    filter: drop-shadow(0px 10px 10px #F1F2F5);
+}
+
+.card img {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    width: 100px;
+    height: 100px;
+    background-image: url(../images/highlight-green.png);
+    background-repeat: no-repeat, repeat;
+}
+
+
+.card h2 {
+
+}
+.card p {
+
+}
+
+.card h3 {
+
+}
+
+
 
 #blazor-error-ui {
     background: lightyellow;
