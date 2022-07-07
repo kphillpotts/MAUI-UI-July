@@ -4,35 +4,55 @@ public class DataService
 {
     public static List<Course> GetCourses() => new()
     {
-        new Course{Name = "Guitar", Mentors = new ()
+        new Course
         {
-            new Mentor {Name = "Scarlett", FollowerCount = 70},
-            new Mentor {Name = "Jhony", FollowerCount = 150},
-            new Mentor {Name = "Linda", FollowerCount = 30},
-        }},
-        new Course{Name = "Saxophone", Mentors = new ()
+            Name = "Guitar",
+            MemberCount = 45,
+            Mentors = new ()
+            {
+                new Mentor {Name = "Scarlett", FollowerCount = 70},
+                new Mentor {Name = "Jhony", FollowerCount = 150},
+                new Mentor {Name = "Linda", FollowerCount = 30},
+            }},
+        new Course
         {
-            new Mentor {Name = "Scarlett", FollowerCount = 70},
-            new Mentor {Name = "Jhony", FollowerCount = 150},
-            new Mentor {Name = "Linda", FollowerCount = 30},
-        }},
-        new Course{Name = "Drums", Mentors = new ()
+            Name = "Saxophone",
+            MemberCount = 14,
+            Mentors = new ()
+            {
+                new Mentor {Name = "Scarlett", FollowerCount = 70},
+                new Mentor {Name = "Jhony", FollowerCount = 150},
+                new Mentor {Name = "Linda", FollowerCount = 30},
+            }
+        },
+        new Course{Name = "Drums",
+            MemberCount = 19,
+            Mentors = new ()
+            {
+                new Mentor {Name = "Scarlett", FollowerCount = 70},
+                new Mentor {Name = "Jhony", FollowerCount = 150},
+                new Mentor {Name = "Linda", FollowerCount = 30},
+            }
+        },
+        new Course{Name = "Piano",
+            MemberCount = 27,
+            Mentors = new ()
+            {
+                new Mentor {Name = "Scarlett", FollowerCount = 70},
+                new Mentor {Name = "Jhony", FollowerCount = 150},
+                new Mentor {Name = "Linda", FollowerCount = 30},
+            }
+        },
+        new Course
         {
-            new Mentor {Name = "Scarlett", FollowerCount = 70},
-            new Mentor {Name = "Jhony", FollowerCount = 150},
-            new Mentor {Name = "Linda", FollowerCount = 30},
-        }},
-        new Course{Name = "Piano", Mentors = new ()
-        {
-            new Mentor {Name = "Scarlett", FollowerCount = 70},
-            new Mentor {Name = "Jhony", FollowerCount = 150},
-            new Mentor {Name = "Linda", FollowerCount = 30},
-        }},
-        new Course{Name = "Double Bass", Mentors = new ()
-        {
-            new Mentor {Name = "Scarlett", FollowerCount = 70},
-            new Mentor {Name = "Jhony", FollowerCount = 150},
-            new Mentor {Name = "Linda", FollowerCount = 30},
-        }},
+            Name = "Double Bass",
+            MemberCount = 100,
+            Mentors = new ()
+            {   
+                new Mentor {Name = "Scarlett", FollowerCount = 70},
+                new Mentor {Name = "Jhony", FollowerCount = 150},
+                new Mentor {Name = "Linda", FollowerCount = 30},
+            }
+        },
     };
 }
