@@ -11,9 +11,9 @@ public class DataService
             MemberCount = 45,
             Mentors = new ()
             {
-                new Mentor {Name = "Scarlett", FollowerCount = 70},
-                new Mentor {Name = "Jhony", FollowerCount = 150},
-                new Mentor {Name = "Linda", FollowerCount = 30},
+                new Mentor {Name = "Scarlett",Image = "scarlett.png", FollowerCount = 70},
+                new Mentor {Name = "Jhony",Image = "jhony.png", FollowerCount = 150},
+                new Mentor {Name = "Linda",Image = "linda.png", FollowerCount = 30},
             }},
         new Course
         {
@@ -22,9 +22,9 @@ public class DataService
             MemberCount = 14,
             Mentors = new ()
             {
-                new Mentor {Name = "Scarlett", FollowerCount = 70},
-                new Mentor {Name = "Jhony", FollowerCount = 150},
-                new Mentor {Name = "Linda", FollowerCount = 30},
+                new Mentor {Name = "Scarlett",Image = "scarlett.png", FollowerCount = 70},
+                new Mentor {Name = "Jhony",Image = "jhony.png", FollowerCount = 150},
+                new Mentor {Name = "Linda",Image = "linda.png", FollowerCount = 30},
             }
         },
         new Course{Name = "Drums",
@@ -32,9 +32,9 @@ public class DataService
             MemberCount = 19,
             Mentors = new ()
             {
-                new Mentor {Name = "Scarlett", FollowerCount = 70},
-                new Mentor {Name = "Jhony", FollowerCount = 150},
-                new Mentor {Name = "Linda", FollowerCount = 30},
+                new Mentor {Name = "Scarlett",Image = "scarlett.png", FollowerCount = 70},
+                new Mentor {Name = "Jhony",Image = "jhony.png", FollowerCount = 150},
+                new Mentor {Name = "Linda",Image = "linda.png", FollowerCount = 30},
             }
         },
         new Course{Name = "Piano",
@@ -42,9 +42,9 @@ public class DataService
             MemberCount = 27,
             Mentors = new ()
             {
-                new Mentor {Name = "Scarlett", FollowerCount = 70},
-                new Mentor {Name = "Jhony", FollowerCount = 150},
-                new Mentor {Name = "Linda", FollowerCount = 30},
+                new Mentor {Name = "Scarlett", Image = "scarlett.png", FollowerCount = 70},
+                new Mentor {Name = "Jhony",Image = "jhony.png", FollowerCount = 150},
+                new Mentor {Name = "Linda",Image = "linda.png", FollowerCount = 30},
             }
         },
         new Course
@@ -53,10 +53,10 @@ public class DataService
             Image = "bass.png",
             MemberCount = 100,
             Mentors = new ()
-            {   
-                new Mentor {Name = "Scarlett", FollowerCount = 70},
-                new Mentor {Name = "Jhony", FollowerCount = 150},
-                new Mentor {Name = "Linda", FollowerCount = 30},
+            {
+                new Mentor {Name = "Scarlett",Image = "scarlett.png", FollowerCount = 70},
+                new Mentor {Name = "Jhony",Image = "jhony.png", FollowerCount = 150},
+                new Mentor {Name = "Linda",Image = "linda.png", FollowerCount = 30},
             }
         },
     };
