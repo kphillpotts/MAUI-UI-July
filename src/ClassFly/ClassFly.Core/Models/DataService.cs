@@ -7,6 +7,7 @@ public class DataService
         new Course
         {
             Name = "Guitar",
+            Image = "guitar.png",
             MemberCount = 45,
             Mentors = new ()
             {
@@ -17,6 +18,7 @@ public class DataService
         new Course
         {
             Name = "Saxophone",
+            Image = "saxophone.png",
             MemberCount = 14,
             Mentors = new ()
             {
@@ -26,6 +28,7 @@ public class DataService
             }
         },
         new Course{Name = "Drums",
+            Image = "drums.png",
             MemberCount = 19,
             Mentors = new ()
             {
@@ -35,6 +38,7 @@ public class DataService
             }
         },
         new Course{Name = "Piano",
+            Image = "piano.png",
             MemberCount = 27,
             Mentors = new ()
             {
@@ -46,6 +50,7 @@ public class DataService
         new Course
         {
             Name = "Double Bass",
+            Image = "bass.png",
             MemberCount = 100,
             Mentors = new ()
             {   
