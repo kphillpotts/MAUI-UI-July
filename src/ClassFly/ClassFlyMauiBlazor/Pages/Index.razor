@@ -1,8 +1,12 @@
 ﻿@page "/"
 @using ClassFly.Core.Models
-
-<h2>Choose course!</h2>
-<input type="text" placeholder="Search courses" />
+@using ClassFlyMauiBlazor.Components
+<Toolbar Subtitle="Choose a course!">
+    <ToolbarItems>
+        <img src="images/menu.png"/>
+    </ToolbarItems>
+</Toolbar>
+<input class="search" type="text" placeholder="Search courses" />
 
 @foreach(var course in Courses)
 {

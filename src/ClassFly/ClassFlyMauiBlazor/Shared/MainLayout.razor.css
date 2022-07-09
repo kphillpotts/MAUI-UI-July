@@ -1,14 +1,4 @@
-.page {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
 
-main {
-    flex: 1;
-    display: flex;
-    flex-direction:column;
-}
 
 .tab-bar {
     
@@ -16,11 +6,3 @@ main {
 
 
 
-
-@media (min-width: 641px) {
-
-    .top-row, article {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
-    }
-}
