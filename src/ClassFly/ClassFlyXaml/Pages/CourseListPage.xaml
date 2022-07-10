@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassFlyXaml.Pages.CourseListPage"
+             xmlns:vm="clr-namespace:ClassFlyXaml.ViewModels"
+             Shell.NavBarIsVisible="False"
+             Title="CourseListPage"
+             BackgroundColor="White"
+             >
+    <ContentPage.BindingContext>
+        <vm:ClassListViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid RowDefinitions="Auto, Auto, *, Auto" Padding="10">
+
+        <Label Text="Choose a course!" Style="{StaticResource CourseHeaderText}"/>
+
+            <SearchBar Placeholder="Search courses" Grid.Row="1"/>
+
+        <CollectionView ItemsSource="{Binding Courses}" 
+                        x:Name="CourseCollectionView"
+                        Grid.Row="2"
+                        SelectedItem="{Binding SelectedCourse}"
+                        SelectionMode="Single"                        
+                        SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border Stroke="#CCCCCC" 
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 20"
+        Background="White"
+        Padding="16,8">
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="20,20"
+                                    Radius="20"
+                                    Opacity="0.1"/>
+                        </Border.Shadow>
+                            <Grid ColumnSpacing="20" ColumnDefinitions="Auto,*" InputTransparent="True">
+                                <Image Source="highlight_green.png" WidthRequest="80" HeightRequest="80"/>
+                                <Image Source="{Binding Image}" WidthRequest="80" HeightRequest="80"/>
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding Name}" Style="{StaticResource CourseHeaderText}"/>
+                                    <Label Text="in class" Style="{StaticResource CourseSmallText}"/>
+                                    <Label Text="{Binding MemberCount, StringFormat='{0} Members'}" Style="{StaticResource CourseSmallText}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+        <BoxView Color="Blue" HeightRequest="100" Grid.Row="3"
+                 CornerRadius="20"
+                 />
+    </Grid>
+    
+    
+</ContentPage>

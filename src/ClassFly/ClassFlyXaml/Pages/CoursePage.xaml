@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassFlyXaml.Pages.CoursePage"
+             Shell.NavBarIsVisible="False"
+             Title="CoursePage">
+
+    
+
+    <Grid RowDefinitions=".25*, .75*" IsClippedToBounds="False">
+
+        <Image Source="piano_large.jpg" 
+               Aspect="AspectFill"
+               Margin="0,0,0,-20"
+                HorizontalOptions="Fill" VerticalOptions="Fill"/>
+
+        <!-- need to allocate a margin = -2 because https://github.com/dotnet/maui/issues/7764 -->
+        <Border Stroke="#CCCCCC" 
+                Margin="-2"
+        StrokeThickness="1"
+                Grid.Row="1"
+        StrokeShape="RoundRectangle 20,20,0,0"
+        Background="White"
+        Padding="16,16">
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                                    Offset="-20,-20"
+                                    Radius="20"
+                                    Opacity="0.2"/>
+            </Border.Shadow>
+
+            <Grid RowDefinitions="AUTO,*">
+                <Label Text="Select Mentor" Style="{StaticResource CourseHeaderText}"
+                       Grid.Row="0"/>
+                <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Mentors}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="#CCCCCC" 
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 20"
+        Background="White"
+        Padding="16,8">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                    Offset="20,20"
+                                    Radius="20"
+                                    Opacity="0.1"/>
+                            </Border.Shadow>
+                            <Grid ColumnSpacing="20" ColumnDefinitions="Auto,*" InputTransparent="True">
+                                <Image Source="highlight_green.png" WidthRequest="80" HeightRequest="80"/>
+                                <Image Source="{Binding Image}" WidthRequest="80" HeightRequest="80"/>
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding Name}" Style="{StaticResource CourseHeaderText}"/>
+                                    <Label Text="{Binding FollowerCount, StringFormat='{0} Followers'}" Style="{StaticResource CourseSmallText}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </Grid>
+        </Border>
+    </Grid>
+    
+</ContentPage>
