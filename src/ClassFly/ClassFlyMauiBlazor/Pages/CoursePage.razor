@@ -18,13 +18,15 @@ else
 
         </div>
         <div class="popup" style="display: flex; flex-direction:column;">
-            <h2>Select mentor</h2>
+            <h2 class="mentor-heading" >Select mentor</h2>
             @foreach(var mentor in Course.Mentors)
             {
-                <div>
-                    <img src="images/@mentor.Image"/>
+                <div class="mentor">
+                    <img class="mentor-image" src="images/@mentor.Image"/>
+                    <div class="divider"></div>
                     <h3>@mentor.Name</h3>
-                    <h3>@mentor.FollowerCount followers</h3>
+                    <h3 class="mentor-followers" >@mentor.FollowerCount followers</h3>
+                    <img class="mentor-arrow" src="images/right.png"/>
                 </div>
             }
         </div>
