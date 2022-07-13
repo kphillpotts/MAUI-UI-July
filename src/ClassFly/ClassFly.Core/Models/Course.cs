@@ -7,4 +7,8 @@ public class Course
 
     public List<Mentor> Mentors { get; set; }
 
+    public bool Matches(string searchTerm)
+    {
+        return Name.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase); 
+    }
 }
