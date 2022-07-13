@@ -7,6 +7,7 @@
     </ToolbarItems>
 </Toolbar>
 <input class="search" type="text" placeholder="Search courses" />
+<input class="search" @oninput="Search" type="text" placeholder="Search courses" />
 
 @foreach(var course in Courses)
 {
@@ -26,5 +27,10 @@
     {
         base.OnInitialized();
         Courses = DataService.GetCourses();
+    }
+
+    void Search(ChangeEventArgs searchTerm)
+    {
+        Courses = DataService.Search(searchTerm.Value as string);
     }
 }

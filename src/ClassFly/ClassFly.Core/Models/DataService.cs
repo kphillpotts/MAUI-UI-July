@@ -2,6 +2,14 @@
 
 public class DataService
 {
+    public static List<Course> Search(string searchTerm)
+    {
+        var courses = GetCourses();
+        courses = courses.Where(x => x.Matches(searchTerm)).ToList();
+        return courses;
+    }
+
+
     public static List<Course> GetCourses() => new()
     {
         new Course
