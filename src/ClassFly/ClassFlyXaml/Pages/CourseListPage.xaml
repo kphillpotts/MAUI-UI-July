@@ -15,8 +15,8 @@
 
         <Label Text="Choose a course!" Style="{StaticResource CourseHeaderText}"/>
 
-            <SearchBar Placeholder="Search courses" Grid.Row="1"/>
-
+        <SearchBar x:Name="CourseSearchBar" Placeholder="Search courses" Grid.Row="1" />
+        
         <CollectionView ItemsSource="{Binding Courses}" 
                         x:Name="CourseCollectionView"
                         Grid.Row="2"
