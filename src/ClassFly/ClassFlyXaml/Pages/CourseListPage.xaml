@@ -11,11 +11,11 @@
         <vm:ClassListViewModel/>
     </ContentPage.BindingContext>
     
-    <Grid RowDefinitions="Auto, Auto, *, Auto" Padding="10">
+    <Grid RowDefinitions="Auto, Auto, *, Auto" >
 
-        <Label Text="Choose a course!" Style="{StaticResource CourseHeaderText}"/>
+        <Label Text="Choose a course!" Style="{StaticResource CourseHeaderText}" Margin="10"/>
 
-        <SearchBar x:Name="CourseSearchBar" Placeholder="Search courses" Grid.Row="1" />
+        <SearchBar x:Name="CourseSearchBar" Placeholder="Search courses" Grid.Row="1"  />
         
         <CollectionView ItemsSource="{Binding Courses}" 
                         x:Name="CourseCollectionView"
@@ -54,9 +54,24 @@
             </CollectionView.ItemTemplate>
             
         </CollectionView>
-        <BoxView Color="Blue" HeightRequest="100" Grid.Row="3"
-                 CornerRadius="20"
-                 />
+
+
+
+        <Border Stroke="#CCCCCC" Grid.Row="3" 
+            StrokeThickness="0"  
+            StrokeShape="RoundRectangle 20,20,0,0"
+            Padding="20"
+            Background="{StaticResource TabBarGradient}">
+    
+            <!-- NOTE: ImageButton source needs to have a .png at the end otherwise won't render -->
+            <Grid ColumnDefinitions="*,*,*,*" HeightRequest="30" IsClippedToBounds="False" >
+                <ImageButton Source="home_active.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                <ImageButton Source="pin_inactive.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <ImageButton Source="bell_inactive.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <ImageButton Source="user_inactive.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+            
+        </Border>
     </Grid>
     
     

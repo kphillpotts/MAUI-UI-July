@@ -3,6 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClassFlyXaml.Resources.Styles.AppStyles">
 
+    <Color x:Key="TabBarDark">#384054</Color>
+    <Color x:Key="TabBarLight">#505A70</Color>
+    <LinearGradientBrush x:Key="TabBarGradient" StartPoint="0,0" EndPoint="1,1" >
+        <GradientStop Color="{StaticResource TabBarDark}" Offset="0.1"/>
+        <GradientStop Color="{StaticResource TabBarLight}" Offset="1.0"/>
+    </LinearGradientBrush>
+
     <Style x:Key="CourseHeaderText" TargetType="Label">
         <Setter Property="FontSize" Value="30"/>
         <Setter Property="TextColor" Value="Black"/>
