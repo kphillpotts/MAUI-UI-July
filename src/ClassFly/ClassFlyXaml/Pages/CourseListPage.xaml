@@ -1,78 +1,116 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClassFlyXaml.Pages.CourseListPage"
-             xmlns:vm="clr-namespace:ClassFlyXaml.ViewModels"
-             Shell.NavBarIsVisible="False"
-             Title="CourseListPage"
-             BackgroundColor="White"
-             >
+<ContentPage
+    x:Class="ClassFlyXaml.Pages.CourseListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:ClassFlyXaml.ViewModels"
+    Title="CourseListPage"
+    BackgroundColor="White"
+    Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
-        <vm:ClassListViewModel/>
+        <vm:ClassListViewModel />
     </ContentPage.BindingContext>
-    
-    <Grid RowDefinitions="Auto, Auto, *, Auto" >
 
-        <Label Text="Choose a course!" Style="{StaticResource CourseHeaderText}" Margin="10"/>
+    <Grid RowDefinitions="Auto, Auto, *, Auto">
 
-        <SearchBar x:Name="CourseSearchBar" Placeholder="Search courses" Grid.Row="1"  />
-        
-        <CollectionView ItemsSource="{Binding Courses}" 
-                        x:Name="CourseCollectionView"
-                        Grid.Row="2"
-                        SelectedItem="{Binding SelectedCourse}"
-                        SelectionMode="Single"                        
-                        SelectionChanged="CollectionView_SelectionChanged">
+        <Label
+            Margin="10"
+            Style="{StaticResource CourseHeaderText}"
+            Text="Choose a course!" />
+
+        <SearchBar
+            x:Name="CourseSearchBar"
+            Grid.Row="1"
+            Placeholder="Search courses" />
+
+        <CollectionView
+            x:Name="CourseCollectionView"
+            Grid.Row="2"
+            ItemsSource="{Binding Courses}"
+            SelectedItem="{Binding SelectedCourse}"
+            SelectionChanged="CollectionView_SelectionChanged"
+            SelectionMode="Single">
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-
-                    <Border Stroke="#CCCCCC" 
-        StrokeThickness="1"
-        StrokeShape="RoundRectangle 20"
-        Background="White"
-        Padding="16,8">
+                    <Border
+                        Padding="16,8"
+                        Background="White"
+                        Stroke="#CCCCCC"
+                        StrokeShape="RoundRectangle 20"
+                        StrokeThickness="1">
                         <Border.Shadow>
-                            <Shadow Brush="Black"
-                                    Offset="20,20"
-                                    Radius="20"
-                                    Opacity="0.1"/>
+                            <Shadow
+                                Brush="Black"
+                                Opacity="0.1"
+                                Radius="20"
+                                Offset="20,20" />
                         </Border.Shadow>
-                            <Grid ColumnSpacing="20" ColumnDefinitions="Auto,*" InputTransparent="True">
-                                <Image Source="highlight_green.png" WidthRequest="80" HeightRequest="80"/>
-                                <Image Source="{Binding Image}" WidthRequest="80" HeightRequest="80"/>
-                                <VerticalStackLayout Grid.Column="1">
-                                    <Label Text="{Binding Name}" Style="{StaticResource CourseHeaderText}"/>
-                                    <Label Text="in class" Style="{StaticResource CourseSmallText}"/>
-                                    <Label Text="{Binding MemberCount, StringFormat='{0} Members'}" Style="{StaticResource CourseSmallText}"/>
-                                </VerticalStackLayout>
-                            </Grid>
+                        <Grid
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="20"
+                            InputTransparent="True">
+                            <Image
+                                HeightRequest="80"
+                                Source="highlight_green.png"
+                                WidthRequest="80" />
+                            <Image
+                                HeightRequest="80"
+                                Source="{Binding Image}"
+                                WidthRequest="80" />
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Style="{StaticResource CourseHeaderText}" Text="{Binding Name}" />
+                                <Label Style="{StaticResource CourseSmallText}" Text="in class" />
+                                <Label Style="{StaticResource CourseSmallText}" Text="{Binding MemberCount, StringFormat='{0} Members'}" />
+                            </VerticalStackLayout>
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            
+
         </CollectionView>
 
 
 
-        <Border Stroke="#CCCCCC" Grid.Row="3" 
-            StrokeThickness="0"  
-            StrokeShape="RoundRectangle 20,20,0,0"
+        <Border
+            Grid.Row="3"
             Padding="20"
-            Background="{StaticResource TabBarGradient}">
-    
-            <!-- NOTE: ImageButton source needs to have a .png at the end otherwise won't render -->
-            <Grid ColumnDefinitions="*,*,*,*" HeightRequest="30" IsClippedToBounds="False" >
-                <ImageButton Source="home_active.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
-                <ImageButton Source="pin_inactive.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <ImageButton Source="bell_inactive.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <ImageButton Source="user_inactive.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+            Background="{StaticResource TabBarGradient}"
+            Stroke="#CCCCCC"
+            StrokeShape="RoundRectangle 20,20,0,0"
+            StrokeThickness="0">
+
+            <!--  NOTE: ImageButton source needs to have a .png at the end otherwise won't render  -->
+            <Grid
+                ColumnDefinitions="*,*,*,*"
+                HeightRequest="30"
+                IsClippedToBounds="False">
+                <ImageButton
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Source="home_active.png"
+                    VerticalOptions="Center" />
+                <ImageButton
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Source="pin_inactive.png"
+                    VerticalOptions="Center" />
+                <ImageButton
+                    Grid.Column="2"
+                    HorizontalOptions="Center"
+                    Source="bell_inactive.png"
+                    VerticalOptions="Center" />
+                <ImageButton
+                    Grid.Column="3"
+                    HorizontalOptions="Center"
+                    Source="user_inactive.png"
+                    VerticalOptions="Center" />
             </Grid>
-            
+
         </Border>
     </Grid>
-    
-    
+
+
 </ContentPage>
