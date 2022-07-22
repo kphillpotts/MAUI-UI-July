@@ -3,17 +3,55 @@
     x:Class="ClassFlyXaml.Pages.CoursePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:ClassFlyXaml.Converters"
     Title="CoursePage"
-    Shell.NavBarIsVisible="False">
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="True">
 
-    <Grid IsClippedToBounds="False" RowDefinitions=".25*, .75*">
+    <ContentPage.Resources>
+        <converters:IndexToObjectConverter
+            x:Key="IndexToBackgroundColorConverter"
+            EvenObject="{StaticResource EvenRowColor}"
+            OddObject="{StaticResource OddRowColor}" />
+
+    </ContentPage.Resources>
+
+    <Shell.TitleView>
+        <Grid Margin="0,0,20,0" ColumnDefinitions="*,30">
+            <Label
+                Style="{StaticResource CourseHeaderText}"
+                Text="{Binding Course.Name}"
+                VerticalOptions="Center" />
+            <Image
+                Grid.Column="1"
+                HeightRequest="28"
+                HorizontalOptions="Center"
+                Source="menu"
+                VerticalOptions="Center"
+                WidthRequest="28" />
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid RowDefinitions=".25*, .75*">
 
         <Image
             Margin="0,0,0,-20"
             Aspect="AspectFill"
             HorizontalOptions="Fill"
             Source="piano_large.jpg"
-            VerticalOptions="Fill" />
+            VerticalOptions="Start" />
+
+        <Border
+            Grid.Row="0"
+            Margin="-2"
+            Background="{StaticResource WhiteFadeGradient}"
+            HeightRequest="30"
+            HorizontalOptions="Fill"
+            Stroke="#CCCCCC"
+            StrokeShape="Rectangle"
+            StrokeThickness="0"
+            VerticalOptions="Start" />
 
         <!--  need to allocate a margin = -2 because https://github.com/dotnet/maui/issues/7764  -->
         <Border
@@ -32,48 +70,75 @@
                     Offset="-20,-20" />
             </Border.Shadow>
 
-            <Grid RowDefinitions="AUTO,*">
+            <Grid RowDefinitions="60,*">
+                <Image
+                    Aspect="Fill"
+                    HeightRequest="20"
+                    HorizontalOptions="Start"
+                    Source="highlight_heading.png"
+                    VerticalOptions="Center"
+                    WidthRequest="200" />
                 <Label
                     Grid.Row="0"
                     Style="{StaticResource CourseHeaderText}"
-                    Text="Select Mentor" />
-                <CollectionView Grid.Row="1" ItemsSource="{Binding Mentors}">
+                    Text="Select Mentor"
+                    VerticalOptions="Center" />
+                <Rectangle
+                    Fill="{StaticResource Gray100}"
+                    HeightRequest="2"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End" />
+
+                <CollectionView
+                    x:Name="MentorsCollectionView"
+                    Grid.Row="1"
+                    Margin="0,20,0,0"
+                    ItemsSource="{Binding Course.Mentors}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Border
-                                Padding="16,8"
-                                Background="White"
-                                Stroke="#CCCCCC"
-                                StrokeShape="RoundRectangle 20"
-                                StrokeThickness="1">
-                                <Border.Shadow>
-                                    <Shadow
-                                        Brush="Black"
-                                        Opacity="0.1"
-                                        Radius="20"
-                                        Offset="20,20" />
-                                </Border.Shadow>
-                                <Grid
-                                    ColumnDefinitions="Auto,*"
-                                    ColumnSpacing="20"
-                                    InputTransparent="True">
-                                    <Image
-                                        HeightRequest="80"
-                                        Source="highlight_green.png"
-                                        WidthRequest="80" />
-                                    <Image
-                                        HeightRequest="80"
-                                        Source="{Binding Image}"
-                                        WidthRequest="80" />
-                                    <VerticalStackLayout Grid.Column="1">
-                                        <Label Style="{StaticResource CourseHeaderText}" Text="{Binding Name}" />
-                                        <Label Style="{StaticResource CourseSmallText}" Text="{Binding FollowerCount, StringFormat='{0} Followers'}" />
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Border>
+                            <Grid ColumnDefinitions="60,5,*,20" ColumnSpacing="15">
+                                <RoundRectangle
+                                    Grid.Column="0"
+                                    CornerRadius="10"
+                                    Fill="{Binding ., Converter={StaticResource IndexToBackgroundColorConverter}, ConverterParameter={x:Reference MentorsCollectionView}}"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="End"
+                                    WidthRequest="50" />
+
+                                <Image
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding Image}"
+                                    VerticalOptions="End"
+                                    WidthRequest="60">
+
+                                    <Image.Clip>
+                                        <RoundRectangleGeometry CornerRadius="10" Rect="5,0,50,60" />
+                                    </Image.Clip>
+                                </Image>
+                                <Rectangle
+                                    Grid.Column="1"
+                                    Fill="{StaticResource Gray100}"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="2" />
+
+                                <VerticalStackLayout Grid.Column="2">
+                                    <Label Style="{StaticResource CourseHeaderText}" Text="{Binding Name}" />
+                                    <Label Style="{StaticResource CourseSmallText}" Text="{Binding FollowerCount, StringFormat='{0} Followers'}" />
+                                </VerticalStackLayout>
+
+                                <Image
+                                    Grid.Column="3"
+                                    HorizontalOptions="Center"
+                                    Source="right.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

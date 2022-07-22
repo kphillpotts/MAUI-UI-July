@@ -1,11 +1,8 @@
 ﻿using ClassFly.Core.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
+using Microsoft.Toolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ClassFlyXaml.Pages;
 
 namespace ClassFlyXaml.ViewModels;
 
@@ -16,14 +13,42 @@ public partial class ClassListViewModel
 
     [ObservableProperty]
     private ObservableCollection<Course> courses;
-
+    
     [ObservableProperty]
     private Course selectedCourse;
 
+
     public ClassListViewModel()
 	{
-        //this.dataservice = new DataService();
         courses = new ObservableCollection<Course>(DataService.GetCourses());
     }
     
+    [ICommand]
+    public async Task GoToCourseDetails(Course course)
+    {
+        if (course == null)
+            return;
+
+        await Shell.Current.GoToAsync(nameof(CoursePage), true, new Dictionary<string, object>
+        {
+            {"Course", course}
+
+        });
+    }
+
+    [ICommand]
+    private void SearchTerm(string searchTerm)
+    {
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            courses = new ObservableCollection<Course>(DataService.Search(searchTerm));
+            OnPropertyChanged("Courses");
+        }
+        else
+        {
+            courses = new ObservableCollection<Course>(DataService.GetCourses());
+            OnPropertyChanged("Courses");
+        }
+    }
+
 }

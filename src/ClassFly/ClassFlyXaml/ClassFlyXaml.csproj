@@ -108,6 +108,10 @@
 		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</MauiImage>
+		<MauiImage Update="Resources\Images\right.png">
+		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</MauiImage>
 		<MauiImage Update="Resources\Images\saxophone.png">
 		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -144,6 +148,7 @@
 	  <None Remove="Resources\Images\drums.png" />
 	  <None Remove="Resources\Images\guitar.png" />
 	  <None Remove="Resources\Images\highlight_green.png" />
+	  <None Remove="Resources\Images\highlight_heading.png" />
 	  <None Remove="Resources\Images\highlight_yellow.png" />
 	  <None Remove="Resources\Images\home_active.png" />
 	  <None Remove="Resources\Images\home_inactive.png" />
@@ -154,6 +159,7 @@
 	  <None Remove="Resources\Images\piano_large.jpg" />
 	  <None Remove="Resources\Images\pin_active.png" />
 	  <None Remove="Resources\Images\pin_inactive.png" />
+	  <None Remove="Resources\Images\right.png" />
 	  <None Remove="Resources\Images\saxophone.png" />
 	  <None Remove="Resources\Images\scarlett.png" />
 	  <None Remove="Resources\Images\search.png" />
@@ -171,6 +177,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.1.0" />
 	  <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
 	</ItemGroup>
 
@@ -184,6 +191,10 @@
 	  <MauiXaml Update="Resources\Styles\AppStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\" />
 	</ItemGroup>
 
 </Project>

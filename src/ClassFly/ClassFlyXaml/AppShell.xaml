@@ -4,12 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ClassFlyXaml"
-    xmlns:pages="clr-namespace:ClassFlyXaml.Pages"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:pages="clr-namespace:ClassFlyXaml.Pages">
 
     <ShellContent
-        Title="Home"
+        Title="Choose a course!"
         ContentTemplate="{DataTemplate pages:CourseListPage}"
-        Route="MainPage" />
+        Route="CourseListPage" />
 
 </Shell>

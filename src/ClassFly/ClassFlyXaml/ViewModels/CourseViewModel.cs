@@ -1,24 +1,16 @@
 ﻿using ClassFly.Core.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassFlyXaml.ViewModels;
 
-
-public partial class CourseViewModel : ObservableObject
+[INotifyPropertyChanged]
+[QueryProperty(nameof(Course), "Course")]
+public partial class CourseViewModel 
 {
-	private Course course;
+    [ObservableProperty]
+	Course course;
 
-	public CourseViewModel(Course course) => this.course = course;
-
-    public string Name
+    public CourseViewModel()
     {
-        get => course.Name;
-        set => SetProperty(course.Name, value, course, (u, n) => u.Name = n);
     }
-    
 }

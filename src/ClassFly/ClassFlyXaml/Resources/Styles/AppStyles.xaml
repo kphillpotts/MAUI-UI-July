@@ -1,28 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClassFlyXaml.Resources.Styles.AppStyles">
+<ResourceDictionary
+    x:Class="ClassFlyXaml.Resources.Styles.AppStyles"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Color x:Key="TabBarDark">#384054</Color>
     <Color x:Key="TabBarLight">#505A70</Color>
-    <LinearGradientBrush x:Key="TabBarGradient" StartPoint="0,0" EndPoint="1,1" >
-        <GradientStop Color="{StaticResource TabBarDark}" Offset="0.1"/>
-        <GradientStop Color="{StaticResource TabBarLight}" Offset="1.0"/>
+
+    <Color x:Key="EvenRowColor">#278C7E</Color>
+    <Color x:Key="OddRowColor">#FFD051</Color>
+
+    <LinearGradientBrush x:Key="TabBarGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0.1" Color="{StaticResource TabBarLight}" />
+        <GradientStop Offset="1.0" Color="{StaticResource TabBarDark}" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WhiteFadeGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0.0" Color="White" />
+        <GradientStop Offset="1.0" Color="#00FFFFFF" />
     </LinearGradientBrush>
 
     <Style x:Key="CourseHeaderText" TargetType="Label">
-        <Setter Property="FontSize" Value="30"/>
-        <Setter Property="TextColor" Value="Black"/>
-        <Setter Property="FontFamily" Value="SFUIText-Medium"/>
-
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontFamily" Value="SFUIText-Medium" />
     </Style>
 
     <Style x:Key="CourseSmallText" TargetType="Label">
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="TextColor" Value="Black"/>
-        <Setter Property="FontFamily" Value="SFUIText-Regular"/>
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontFamily" Value="SFUIText-Regular" />
     </Style>
 
-    
-    
+    <Style TargetType="TabBar">
+        <Setter Property="Shell.TabBarBackgroundColor" Value="CornflowerBlue" />
+        <Setter Property="Shell.TabBarTitleColor" Value="Black" />
+        <Setter Property="Shell.TabBarUnselectedColor" Value="AntiqueWhite" />
+    </Style>
+
+
+
 </ResourceDictionary>

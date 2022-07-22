@@ -3,32 +3,86 @@
     x:Class="ClassFlyXaml.Pages.CourseListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:ClassFlyXaml.Converters"
+    xmlns:local="clr-namespace:ClassFlyXaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:ClassFlyXaml.ViewModels"
-    Title="CourseListPage"
     BackgroundColor="White"
-    Shell.NavBarIsVisible="False">
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="True">
     <ContentPage.BindingContext>
         <vm:ClassListViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IndexToObjectConverter
+                x:Key="IndexToBackgroundImageConverter"
+                EvenObject="highlight_green.png"
+                OddObject="highlight_yellow.png" />
+
+            <local:AlternateRowDataTemplateSelector
+                x:Key="alternateColorDataTemplateSelector"
+                EvenTemplate="{StaticResource evenTemplate}"
+                UnevenTemplate="{StaticResource unevenTemplate}" />
+        </ResourceDictionary>
+
+
+    </ContentPage.Resources>
+
+
+    <Shell.TitleView>
+        <Grid Margin="0,0,20,0" ColumnDefinitions="*,30">
+            <Label
+                Style="{StaticResource CourseHeaderText}"
+                Text="Choose a course"
+                VerticalOptions="Center" />
+            <Image
+                Grid.Column="1"
+                HeightRequest="28"
+                HorizontalOptions="Center"
+                Source="menu"
+                VerticalOptions="Center"
+                WidthRequest="28" />
+        </Grid>
+    </Shell.TitleView>
+
+
+
     <Grid RowDefinitions="Auto, Auto, *, Auto">
 
-        <Label
-            Margin="10"
-            Style="{StaticResource CourseHeaderText}"
-            Text="Choose a course!" />
 
-        <SearchBar
-            x:Name="CourseSearchBar"
+        <Border
             Grid.Row="1"
-            Placeholder="Search courses" />
+            Margin="10,0,10,0"
+            Stroke="#CCCCCC"
+            StrokeShape="RoundRectangle 20"
+            StrokeThickness="1">
+            <SearchBar x:Name="CourseSearchBar" Placeholder="Search courses">
+                <!--
+                    SearchCommand="{Binding SearchTermCommand}"
+                    SearchCommandParameter="{Binding Text, Source={x:Reference CourseSearchBar}}">
+                -->
 
+                <SearchBar.Behaviors>
+                    <toolkit:EventToCommandBehavior
+                        Command="{Binding SearchTermCommand}"
+                        CommandParameter="{Binding Text, Source={x:Reference CourseSearchBar}}"
+                        EventName="TextChanged" />
+                </SearchBar.Behaviors>
+            </SearchBar>
+        </Border>
+
+        <!--
+            ItemTemplate="{StaticResource alternateColorDataTemplateSelector}"
+        -->
         <CollectionView
             x:Name="CourseCollectionView"
             Grid.Row="2"
+            Margin="10"
             ItemsSource="{Binding Courses}"
             SelectedItem="{Binding SelectedCourse}"
-            SelectionChanged="CollectionView_SelectionChanged"
             SelectionMode="Single">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
@@ -43,18 +97,22 @@
                         StrokeThickness="1">
                         <Border.Shadow>
                             <Shadow
-                                Brush="Black"
-                                Opacity="0.1"
-                                Radius="20"
-                                Offset="20,20" />
+                                Brush="{StaticResource Gray500}"
+                                Opacity=".15"
+                                Radius="10"
+                                Offset="5,5" />
                         </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClassListViewModel}}, Path=GoToCourseDetailsCommand}" CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
                         <Grid
                             ColumnDefinitions="Auto,*"
                             ColumnSpacing="20"
-                            InputTransparent="True">
+                            InputTransparent="True"
+                            IsClippedToBounds="False">
                             <Image
                                 HeightRequest="80"
-                                Source="highlight_green.png"
+                                Source="{Binding ., Converter={StaticResource IndexToBackgroundImageConverter}, ConverterParameter={x:Reference CourseCollectionView}}"
                                 WidthRequest="80" />
                             <Image
                                 HeightRequest="80"
@@ -69,6 +127,15 @@
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource CourseHeaderText}"
+                        Text="No courses match that search term..."
+                        VerticalOptions="Center" />
+                </ContentView>
+            </CollectionView.EmptyView>
 
         </CollectionView>
 
@@ -76,6 +143,7 @@
 
         <Border
             Grid.Row="3"
+            Margin="-2"
             Padding="20"
             Background="{StaticResource TabBarGradient}"
             Stroke="#CCCCCC"
@@ -108,9 +176,6 @@
                     Source="user_inactive.png"
                     VerticalOptions="Center" />
             </Grid>
-
         </Border>
     </Grid>
-
-
 </ContentPage>
