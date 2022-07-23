@@ -22,10 +22,10 @@
                 EvenObject="highlight_green.png"
                 OddObject="highlight_yellow.png" />
 
-            <local:AlternateRowDataTemplateSelector
+            <!--<local:AlternateRowDataTemplateSelector
                 x:Key="alternateColorDataTemplateSelector"
                 EvenTemplate="{StaticResource evenTemplate}"
-                UnevenTemplate="{StaticResource unevenTemplate}" />
+                UnevenTemplate="{StaticResource unevenTemplate}" />-->
         </ResourceDictionary>
 
 
